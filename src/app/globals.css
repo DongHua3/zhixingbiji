@@ -1,0 +1,625 @@
+
+@import "tailwindcss";
+
+@theme {
+  --color-bg-main: #EFF6FF;
+  --color-bg-sidebar: #FAF8F5;
+  --color-border-dark: #000000;
+  
+  --color-neo-blue: #2563EB;
+  --color-neo-purple: #7C3AED;
+  --color-neo-yellow: #FFD700;
+  --color-neo-pink: #FF4B4B;
+  --color-neo-green: #10B981;
+  --color-neo-orange: #F59E0B;
+  --color-neo-white: #FFFFFF;
+  
+  --shadow-neo: 4px 4px 0px 0px var(--color-border-dark);
+  --shadow-neo-hover: 2px 2px 0px 0px var(--color-border-dark);
+  --shadow-neo-active: 0px 0px 0px 0px var(--color-border-dark);
+  
+  --font-sans: var(--font-plus-jakarta-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-bg-main);
+  }
+}
+
+::selection,
+*::selection,
+.zxbj-mdx-editor *::selection,
+.zxbj-mdx-editor::selection {
+  background-color: #d1d5db !important;
+  color: #000 !important;
+}
+
+@layer utilities {
+
+  .neo-card {
+    @apply bg-neo-white border-3 border-border-dark rounded-xl shadow-neo p-6 mb-6 transition-all duration-200;
+  }
+  
+  .neo-card:hover {
+    @apply translate-x-0.5 translate-y-0.5 shadow-neo-hover;
+  }
+  
+  .neo-btn {
+    @apply inline-flex items-center justify-center gap-2 py-3 px-6 bg-neo-white border-3 border-border-dark rounded-lg font-extrabold text-sm text-black cursor-pointer shadow-neo transition-all duration-100 select-none no-underline;
+  }
+
+  .neo-btn:hover {
+    @apply translate-x-px translate-y-px shadow-[3px_3px_0px_var(--color-border-dark)];
+  }
+
+  .neo-btn:active {
+    @apply translate-x-1 translate-y-1 shadow-neo-active;
+  }
+  
+  .neo-btn-primary {
+    @apply bg-neo-yellow;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #000000;
+    border: 2px solid var(--color-bg-main);
+    border-radius: 4px;
+  }
+}
+
+/* MDXEditor Styles (Neo-Brutalism) */
+.zxbj-mdx-editor {
+  flex: 1;
+  font-size: 16px;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* Prevent flex blowout */
+  min-height: 0; /* Prevent vertical blowout */
+  overflow: hidden;
+}
+
+.zxbj-mdx-editor .mdxeditor-toolbar {
+  border-bottom: 3px solid #000 !important;
+  background-color: var(--color-bg-sidebar) !important;
+  padding: 8px !important;
+  min-width: 0;
+  overflow-x: auto;
+}
+
+.zxbj-mdx-editor .mdxeditor-toolbar button {
+  border: 2px solid transparent;
+  border-radius: 4px;
+  margin-right: 4px;
+  flex-shrink: 0;
+}
+
+.zxbj-mdx-editor .mdxeditor-toolbar button:hover {
+  border: 2px solid #000;
+  background-color: #e5e7eb;
+}
+
+.zxbj-mdx-editor .mdxeditor-toolbar button[data-state="on"] {
+  border: 2px solid #000 !important;
+  background-color: #d1d5db !important;
+}
+
+.zxbj-mdx-editor > div:not(.mdxeditor-toolbar) {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+.zxbj-mdx-editor .mdxeditor-root-contenteditable {
+  padding: 20px !important;
+  outline: none !important;
+  overflow-wrap: break-word; /* Wrap long text */
+  word-break: break-all; /* Force long strings like 1111111 to break */
+  min-height: 100%;
+}
+
+.zxbj-mdx-editor [data-lexical-editor] h1 { font-size: 2em; font-weight: 800; margin-bottom: 0.5em; }
+.zxbj-mdx-editor [data-lexical-editor] h2 { font-size: 1.5em; font-weight: 700; margin-bottom: 0.5em; }
+.zxbj-mdx-editor [data-lexical-editor] h3 { font-size: 1.17em; font-weight: 700; margin-bottom: 0.5em; }
+.zxbj-mdx-editor [data-lexical-editor] ul { list-style-type: disc; padding-left: 1.5em; }
+.zxbj-mdx-editor [data-lexical-editor] ol { list-style-type: decimal; padding-left: 1.5em; }
+.zxbj-mdx-editor [data-lexical-editor] blockquote { border-left: 4px solid #000; padding-left: 1em; color: #333; background: #fff; border-radius: 4px; margin: 10px 0; }
+.zxbj-mdx-editor [data-lexical-editor] code { background-color: rgba(0,0,0,0.05); padding: 2px 4px; border-radius: 4px; font-family: monospace; border: 2px solid #000; font-weight: bold; }
+.zxbj-mdx-editor [data-lexical-editor] a {
+  color: var(--color-neo-blue, #2563EB);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+  font-weight: 700;
+  padding: 0 2px;
+  transition: all 0.2s;
+}
+.zxbj-mdx-editor [data-lexical-editor] a:hover {
+  background-color: var(--color-neo-yellow, #FFD700);
+  color: #000;
+  text-decoration-color: #000;
+}
+
+/* ==== MDXEditor Link Dialog Tweaks (Neo-Brutalism Edition) ==== */
+/* Hide unnecessary Title and Anchor Text fields in the popup */
+div:has(> input[name="title"]),
+div:has(> input[name="text"]) {
+  display: none !important;
+}
+
+/* 1. Style the popup container */
+div:has(> form:has(input[name="url"])) {
+  border: 3px solid var(--border-color) !important;
+  border-radius: 8px !important;
+  box-shadow: 4px 4px 0 var(--border-color) !important;
+  background-color: var(--neo-white) !important;
+  padding: 16px !important;
+  font-family: inherit !important;
+}
+
+/* 2. Style the URL label */
+label[for="link-url"] {
+  font-weight: 700 !important;
+  color: var(--border-color) !important;
+  margin-bottom: 6px !important;
+  display: block !important;
+  font-size: 14px !important;
+}
+
+/* 3. Style the URL input */
+input[name="url"] {
+  width: 280px !important;
+  min-width: unset !important;
+  max-width: 100% !important;
+  cursor: text !important;
+  border-radius: 6px !important;
+  padding: 10px 12px !important;
+  border: 2px solid var(--border-color) !important;
+  box-shadow: 2px 2px 0 var(--border-color) !important;
+  font-weight: 600 !important;
+  background-color: #fff !important;
+  transition: all 0.2s ease !important;
+  margin-bottom: 8px !important;
+}
+input[name="url"]:focus {
+  outline: none !important;
+  box-shadow: 3px 3px 0 var(--border-color) !important;
+  background-color: #FFF9C4 !important; /* light neo-yellow */
+}
+
+/* 4. Style the Save Button (Primary) */
+form:has(input[name="url"]) button[type="submit"] {
+  background-color: var(--neo-blue) !important;
+  color: #fff !important;
+  border: 2px solid var(--border-color) !important;
+  box-shadow: 2px 2px 0 var(--border-color) !important;
+  border-radius: 6px !important;
+  padding: 6px 18px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.1s ease !important;
+}
+form:has(input[name="url"]) button[type="submit"]:hover {
+  transform: translate(-1px, -1px) !important;
+  box-shadow: 3px 3px 0 var(--border-color) !important;
+  background-color: #1D4ED8 !important;
+}
+form:has(input[name="url"]) button[type="submit"]:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 0px 0px 0 var(--border-color) !important;
+}
+
+/* 5. Style the Cancel Button (Secondary) */
+form:has(input[name="url"]) button[type="reset"] {
+  background-color: var(--neo-white) !important;
+  color: var(--border-color) !important;
+  border: 2px solid var(--border-color) !important;
+  box-shadow: 2px 2px 0 var(--border-color) !important;
+  border-radius: 6px !important;
+  padding: 6px 18px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.1s ease !important;
+  margin-left: 8px !important;
+}
+form:has(input[name="url"]) button[type="reset"]:hover {
+  background-color: var(--neo-pink) !important;
+  color: #fff !important;
+  transform: translate(-1px, -1px) !important;
+  box-shadow: 3px 3px 0 var(--border-color) !important;
+}
+form:has(input[name="url"]) button[type="reset"]:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 0px 0px 0 var(--border-color) !important;
+}
+
+/* ==========================================
+   6. 新粗野暗黑主题配色 (Neo-Brutalist Dark Theme)
+   ========================================== */
+.dark {
+  --bg-main: #121214; /* 护眼深炭黑 */
+  --bg-sidebar: #18181C; /* 侧边栏深灰 */
+  --neo-white: #1E1E22; /* 卡片舒适炭灰 */
+  --border-color: #000000; /* 标志性黑色描边 */
+
+  /* Theme-aware variables overrides */
+  --bg-card: #1E1E22;
+  --bg-input: #18181C;
+  --bg-disabled: #2D2D35;
+  --bg-btn-secondary: #18181C;
+  --text-primary: #FFFFFF;
+  --text-secondary: #CBD5E1;
+  --text-muted: #9CA3AF;
+  --bg-preview: #18181C;
+  --bg-badge-locked: #2D2D35;
+  --bg-badge-unlocked: #1E1E22;
+  --bg-drag-zone-active: #2A2B15;
+  --bg-drag-zone-inactive: #1E1E22;
+  --text-contrast-dark: #FFFFFF;
+
+  /* Feature cards dark mode colors */
+  --card-purple-bg: #2E1A47;
+  --card-pink-bg: #4C0519;
+  --card-green-bg: #064E3B;
+  --card-yellow-bg: #78350F;
+  --card-text-title: #FFFFFF;
+  --card-text-desc: #E2E8F0;
+  
+  color: #E2E8F0 !important;
+  background-color: #121214 !important;
+}
+
+.dark h1, 
+.dark h2, 
+.dark h3, 
+.dark h4, 
+.dark h5, 
+.dark h6, 
+.dark .brand-logo, 
+.dark .neo-title {
+  color: #FFFFFF !important;
+}
+
+/* 侧边栏暗黑适配 */
+.dark .sidebar {
+  border-right-color: #000000 !important;
+  background-color: #18181C !important;
+}
+.dark .logo-icon {
+  border-color: #000000 !important;
+  box-shadow: 3px 3px 0px #000000 !important;
+}
+.dark .menu-item {
+  color: #E2E8F0 !important;
+}
+.dark .menu-item svg {
+  stroke: #E2E8F0 !important;
+}
+.dark .menu-item:hover,
+.dark .menu-item.active {
+  background-color: #1E1E22 !important;
+  border-color: #000000 !important;
+  box-shadow: 4px 4px 0px #000000 !important;
+  transform: translate(-4px, -4px);
+}
+.dark .menu-item.active {
+  background-color: var(--neo-yellow) !important;
+  color: #000000 !important;
+}
+.dark .menu-item.active svg {
+  stroke: #000000 !important;
+}
+
+/* 用户状态卡适配 */
+.dark .user-profile {
+  background: #1E1E22 !important;
+  border-color: #000000 !important;
+  box-shadow: 3px 3px 0px #000000 !important;
+}
+.dark .avatar {
+  border-color: #000000 !important;
+}
+.dark .user-role {
+  color: #9CA3AF !important;
+}
+
+/* 按钮暗黑适配 */
+.dark .neo-btn {
+  color: #E2E8F0 !important;
+  border-color: #000000 !important;
+  background-color: #1E1E22 !important;
+  box-shadow: 4px 4px 0px #000000 !important;
+}
+.dark .neo-btn:hover {
+  box-shadow: 3px 3px 0px #000000 !important;
+}
+.dark .neo-btn:active {
+  box-shadow: 0px 0px 0px #000000 !important;
+}
+.dark .neo-btn.primary {
+  background-color: var(--neo-yellow) !important;
+  color: #000000 !important;
+}
+.dark .neo-btn.primary svg {
+  stroke: #000000 !important;
+}
+
+/* 表单与输入框 */
+.dark .neo-input,
+.dark input[type="text"],
+.dark textarea,
+.dark select {
+  background-color: #18181C !important;
+  color: #E2E8F0 !important;
+  border-color: #000000 !important;
+  box-shadow: 3px 3px 0px #000000 !important;
+}
+.dark .neo-input:focus,
+.dark input[type="text"]:focus,
+.dark textarea:focus,
+.dark select:focus {
+  box-shadow: 5px 5px 0px #000000 !important;
+}
+
+/* 卡片 */
+.dark .neo-card {
+  background-color: #1E1E22 !important;
+  border-color: #000000 !important;
+  box-shadow: 6px 6px 0px 0px #000000 !important;
+}
+.dark .neo-card:hover {
+  box-shadow: 2px 2px 0px 0px #000000 !important;
+}
+
+/* 徽章 */
+.dark .neo-badge {
+  border-color: #000000 !important;
+  box-shadow: 2px 2px 0px #000000 !important;
+  background-color: #1E1E22 !important;
+  color: #E2E8F0 !important;
+}
+
+/* 笔记工作台暗黑适配 */
+.dark .notes-workspace {
+  border-color: #000000 !important;
+  box-shadow: 6px 6px 0 #000000 !important;
+}
+.dark .notes-sidebar {
+  border-right-color: #000000 !important;
+  background: #18181C !important;
+}
+.dark .notes-sidebar-header {
+  border-bottom-color: #000000 !important;
+  background-color: #1E1E22 !important;
+}
+.dark .editor-header {
+  border-bottom-color: #000000 !important;
+  background-color: #1E1E22 !important;
+}
+.dark .editor-title-input {
+  color: #FFFFFF !important;
+}
+
+/* Tiptap/MDXEditor 核心区暗黑适配 */
+.dark .zxbj-mdx-editor {
+  background-color: #121214 !important;
+  color: #E2E8F0 !important;
+}
+.dark .zxbj-mdx-editor .mdxeditor-toolbar {
+  border-bottom-color: #000000 !important;
+  background-color: #1E1E22 !important;
+}
+.dark .zxbj-mdx-editor .mdxeditor-toolbar button {
+  color: #E2E8F0 !important;
+}
+.dark .zxbj-mdx-editor .mdxeditor-toolbar button:hover {
+  border-color: #000000 !important;
+  background-color: #2D2D35 !important;
+}
+.dark .zxbj-mdx-editor .mdxeditor-toolbar button[data-state="on"] {
+  border-color: #000000 !important;
+  background-color: #3E3E4A !important;
+}
+.dark .zxbj-mdx-editor [data-lexical-editor] blockquote {
+  border-left-color: var(--neo-yellow) !important;
+  background: #1E1E22 !important;
+  color: #E5E7EB !important;
+}
+.dark .zxbj-mdx-editor [data-lexical-editor] code {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+.dark .zxbj-mdx-editor [data-lexical-editor] a {
+  color: var(--neo-yellow) !important;
+}
+.dark .zxbj-mdx-editor [data-lexical-editor] a:hover {
+  color: #000000 !important;
+}
+.dark .tree-folder-title,
+.dark .tree-file {
+  color: #E5E7EB !important;
+}
+.dark .tree-file.active {
+  background-color: var(--neo-yellow) !important;
+  border: 2px solid #000000 !important;
+  box-shadow: 2px 2px 0 #000000 !important;
+  color: #000000 !important;
+}
+.dark .tree-file.active span,
+.dark .tree-file.active svg,
+.dark .tree-file.active .icon-m {
+  color: #000000 !important;
+  stroke: #000000 !important;
+}
+.dark .tree-file.active .icon-m {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+.dark .tree-item-actions svg:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #FFFFFF !important;
+}
+
+/* 笔记文件夹与文件树搜索框暗黑适配 */
+.dark .search-input {
+  background-color: #18181C !important;
+  color: #FFFFFF !important;
+  border: 2.5px solid #000000 !important;
+  box-shadow: 2px 2px 0px #000000 !important;
+}
+.dark .search-input::placeholder {
+  color: #9CA3AF !important;
+}
+
+/* 笔记工作台模块暗黑适配 */
+.dark .notes-sidebar {
+  background-color: #18181C !important;
+  border-right-color: #000000 !important;
+}
+.dark .notes-sidebar-header {
+  border-bottom-color: #000000 !important;
+  background-color: #1E1E22 !important;
+}
+.dark .inline-folder-input {
+  background-color: #18181C !important;
+  color: #FFFFFF !important;
+  border: 2px solid #000000 !important;
+}
+
+/* 编辑器区域暗黑适配 */
+.dark .editor-main {
+  border-right-color: #000000 !important;
+  background-color: #121214 !important;
+}
+.dark .editor-header {
+  border-bottom-color: #000000 !important;
+  background-color: #1E1E22 !important;
+}
+.dark .editor-body {
+  background-color: #121214 !important;
+}
+.dark .editor-title-input {
+  color: #FFFFFF !important;
+  background-color: transparent !important;
+}
+
+/* 特色行动清单暗黑适配 (Action Items) */
+.dark .action-items-pane {
+  background-color: #18181C !important;
+  border-left: 3px solid #000000 !important;
+}
+.dark .action-header {
+  border-bottom-color: #000000 !important;
+  background-color: var(--neo-orange) !important;
+}
+.dark .action-header h3 {
+  color: #000000 !important;
+}
+.dark .action-body {
+  background-color: #18181C !important;
+}
+.dark .action-item-checkbox {
+  background-color: #1E1E22 !important;
+  border-color: #000000 !important;
+  box-shadow: 2px 2px 0px #000000 !important;
+  color: #FFFFFF !important;
+}
+.dark .action-item-checkbox:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px #000000 !important;
+}
+.dark .action-item-checkbox.completed {
+  background-color: rgba(16, 185, 129, 0.15) !important;
+  border-color: #000000 !important;
+}
+.dark .action-item-checkbox.completed .action-text {
+  color: #9CA3AF !important;
+}
+.dark .checkbox-custom {
+  background-color: #18181C !important;
+  border-color: #000000 !important;
+}
+.dark .action-item-checkbox.completed .checkbox-custom {
+  background-color: var(--neo-green) !important;
+}
+.dark .checkbox-custom::after {
+  color: #000000 !important;
+}
+.dark .action-meta {
+  color: #9CA3AF !important;
+}
+.dark .add-action-box {
+  background-color: #1E1E22 !important;
+  border-top: 3px solid #000000 !important;
+}
+.dark .add-action-box input,
+.dark .add-action-box select,
+.dark .add-action-box button {
+  border-color: #000000 !important;
+}
+.dark .inline-folder-input {
+  background-color: #18181C !important;
+  color: #FFFFFF !important;
+  border: 2px solid #000000 !important;
+}
+
+/* Hardcoded text colors dark mode overrides */
+.dark .note-card-excerpt,
+.dark .note-card-excerpt p,
+.dark .note-excerpt,
+.dark .recent-note-excerpt,
+.dark .stats-card .stats-title,
+.dark .stats-card .stats-footer,
+.dark .insight-section,
+.dark .tree-file,
+.dark .notes-list-title,
+.dark .note-list-item-date,
+.dark .action-meta,
+.dark .hero-subtitle,
+.dark .section-header p,
+.dark .feature-card-desc,
+.dark .cta-desc,
+.dark .footer-brand p,
+.dark .footer-links-col a,
+.dark .footer-bottom,
+.dark .social-auth-divider {
+  color: var(--text-secondary) !important;
+}
+
+.dark .new-dropdown-item {
+  color: var(--text-primary) !important;
+}
+
+.dark .new-dropdown-item:hover {
+  background: var(--bg-disabled) !important;
+}
+
+.dark .new-dropdown-divider {
+  background: var(--border-color) !important;
+}
+
+.dark .tree-arrow {
+  stroke: var(--text-muted) !important;
+}
+
+.dark .tree-folder-content {
+  border-left-color: var(--border-color) !important;
+}
+
+.dark .icon-m {
+  background: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-muted) !important;
+}

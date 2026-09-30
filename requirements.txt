@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+python-multipart
+markitdown==0.1.6
+httpx
+openai
+mammoth
+pdfminer.six
+openpyxl
+python-pptx
+beautifulsoup4
+python-docx
+pandas
+pdfplumber
+pillow>=10.0.0

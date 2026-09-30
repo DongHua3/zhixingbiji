@@ -1,0 +1,28 @@
+# Vercel 部署忽略规则
+
+# 排除非项目资源目录及 AI 协同工具
+非项目文件/
+.agents/
+
+# 排除虚拟环境和依赖包
+venv/
+.venv/
+node_modules/
+
+# 排除本地统计数据库
+api/usage.db
+*.db
+
+# 排除 Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 排除 IDE & Git 配置
+.git/
+.gitignore
+*.md
+walkthrough.md
+implementation_plan.md
+task.md
